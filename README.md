@@ -42,12 +42,13 @@ Here is our group’s github link for reference: [finalprojectinfo201](https://g
 
 Group member tasks: 
 
-1. Data cleaning -- Vincent Liu
+1. Data cleaning -- Vincent Liu, Anthony Zhang
 
-2. Plotting -- Minhui He
+2. Plotting -- Minhui He, Anthony Zhang
 
-3. Time keeper -- Minhui He
+3. Time keeper -- Minhui He, Anthony Zhang
 
-4. Analysis -- Vincent Liu
+4. Analysis -- Vincent Liu, Anthony Zhang
 
-5. Web designing -- Minhui He
+5. Web designing -- Anthony Zhang
+
