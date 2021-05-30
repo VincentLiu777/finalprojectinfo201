@@ -4,7 +4,7 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel(),
+    titlePanel("Covid-19 data visualization and analysis"),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(
