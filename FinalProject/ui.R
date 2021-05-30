@@ -10,12 +10,13 @@ shinyUI(fluidPage(
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
-            sliderInput()
+            sliderInput("slider", "Time", min = as.Date("2020-01-01"),max =as.Date("2021-05-01"),value=as.Date("2020-01-01"),timeFormat="%m/%Y"),
+            uiOutput("locations")
         ),
 
         # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("graph")
+            plotOutput("vac_Plot")
         )
     )
 ))
