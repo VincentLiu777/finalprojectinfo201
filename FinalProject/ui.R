@@ -4,7 +4,7 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel(),
+    titlePanel(""),
 
     # Sidebar with a slider input for number of bins
     sidebarLayout(
@@ -14,7 +14,7 @@ shinyUI(fluidPage(
 
         # Show a plot of the generated distribution
         mainPanel(
-            plotOutput("")
+            plotOutput("graph")
         )
     )
 ))
