@@ -1,4 +1,4 @@
-covidData <- read.csv("../raw data/owid-covid-data (1).csv")
+covidData <- read.csv("../raw data/owid-covid-data (1).csv") 
 
 covidData[is.na(covidData)] = 0
 
@@ -11,7 +11,7 @@ data <- covidData %>%
   mutate(month = format(as.POSIXlt(date), "%m/%Y")) %>%
   group_by(location, month) %>%
   summarise(total_cases = max(total_cases), 
-            new_cases = max(new_cases),
+            new_cases = sum(new_cases), ## adjusted for calculation mortality rate 
             total_deaths = max(total_deaths),
-            new_deaths = max(new_deaths),
+            new_deaths = sum(new_deaths),## adjusted for calculation mortality rate
             people_fully_vaccinated = max(people_fully_vaccinated))
