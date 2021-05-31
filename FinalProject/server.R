@@ -3,6 +3,7 @@ library(dplyr)
 library(ggplot2)
 library(hrbrthemes)
 library(tidyverse)
+library(scales)
 
 
 source("data_clean.R")
@@ -66,21 +67,24 @@ shinyServer(function(input, output) {
         geom_segment(data = segmentData(), aes(x=new_cases  , xend=total_cases, y=location, yend=location))+
         geom_point(stat = "identity") +
         geom_point(data = totalCases(), aes(x=total_cases, y=location, color = location), stat = "identity")+
-        xlab("Value of new cases - total cases")
+        xlab("Value of new cases - total cases") +
+        scale_x_continuous(labels = comma)
       
     })
     
    
     output$Mortality_Plot <- renderPlot({ ## graph correspond with the mortality rate. 
       ggplot(mortality())+
-        geom_segment(aes(x=0  , xend=people_fully_vaccinated, y=location, yend=location, color = location))+
-        geom_point(aes(x= mortality_rate, y = location, color = location),stat = "identity")
+        geom_segment(aes(x=0  , xend=mortality_rate , y=location, yend=location, color = location))+
+        geom_point(aes(x= mortality_rate, y = location, color = location),stat = "identity")+
+        scale_x_continuous(labels = comma)
     })
     
     output$vac_Plot <- renderPlot({ ## graph correspond with the vaccine. 
       ggplot(vac()) +
         geom_segment(aes(x=0  , xend=people_fully_vaccinated, y=location, yend=location, color = location))+
-        geom_point(aes(x = people_fully_vaccinated, y = location, color = location), stat = "identity")
+        geom_point(aes(x = people_fully_vaccinated, y = location, color = location), stat = "identity")+
+        scale_x_continuous(labels = comma)
     })
         
 })
