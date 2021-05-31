@@ -103,6 +103,7 @@ shinyServer(function(input, output, session) {
       ggplotly(p = ggplot(vac()) +
                  geom_segment(aes(x=0  , xend=people_fully_vaccinated, y=location, yend=location, color = location))+
                  geom_point(aes(x = people_fully_vaccinated, y = location, color = location), stat = "identity")+
+                 xlab("Number of fully vaccinated individual") +
                  scale_x_continuous(labels = comma))
       
     })
