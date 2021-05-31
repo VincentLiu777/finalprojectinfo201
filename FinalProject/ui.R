@@ -18,7 +18,9 @@ shinyUI(fluidPage(
         # Show a plot of the generated distribution
         mainPanel(
 
-            plotOutput("cases_Plot")
+            plotOutput("cases_Plot"),
+            plotOutput("Mortality_Plot"), ## added my graph for the time being. 
+            plotOutput("vac_Plot")
 
         )
     )
