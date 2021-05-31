@@ -4,6 +4,7 @@ library(ggplot2)
 library(hrbrthemes)
 library(tidyverse)
 library(scales)
+library(plotly)
 
 
 source("data_clean.R")
@@ -22,11 +23,11 @@ shinyServer(function(input, output, session) {
       if(input$selectall == 0) return(NULL) 
       else if (input$selectall%%2 == 0)
       {
-        updateCheckboxGroupInput(session,"location",label = h3("locations of interest"),choices=unique(data$location))
+        updateCheckboxGroupInput(session,"location",h3("locations of interest"),choices=unique(data$location))
       }
       else
       {
-        updateCheckboxGroupInput(session,"location",label = h3("locations of interest"),choices=unique(data$location), selected = unique(data$location) )
+        updateCheckboxGroupInput(session,"location",h3("locations of interest"),choices=unique(data$location), selected = unique(data$location) )
       }
     })
 #selectAll action button end    
@@ -67,39 +68,43 @@ shinyServer(function(input, output, session) {
     
 #Cases graph section end
     
-    output$cases_Plot <- renderPlot ({ ## graph correspond with the Infected cases 
+    output$cases_Plot <- renderPlotly ({ ## graph correspond with the Infected cases 
     
-    segmentData <- reactive({
-      print(input$slider)
-      data %>%
-        filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
-        filter(location %in% input$location) %>%
-        select(location, total_cases, new_cases)
-    })
+      segmentData <- reactive({
+        print(input$slider)
+        data %>%
+          filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
+          filter(location %in% input$location) %>%
+          select(location, total_cases, new_cases)
+      })
     
-      ggplot(newCases(),aes(x=new_cases, y=location, color = location) ) +
-        geom_segment(data = segmentData(), aes(x=new_cases  , xend=total_cases, y=location, yend=location))+
-        geom_point(stat = "identity") +
-        geom_point(data = totalCases(), aes(x=total_cases, y=location, color = location), stat = "identity")+
-        xlab("Cases of infection, New cases -> total cases") +
-        scale_x_continuous(labels = comma)
+     
       
+      ggplotly(p =  ggplot(newCases(),aes(x=new_cases, y=location, color = location) ) +
+                 geom_segment(data = segmentData(), aes(x=new_cases, xend=total_cases, y=location, yend=location))+
+                 geom_point(stat = "identity") +
+                 geom_point(data = totalCases(), aes(x=total_cases, y=location, color = location), stat = "identity")+
+                 xlab("Cases of infection, New cases -> total cases") +
+                 scale_x_continuous(labels = comma))
+
     })
     
    
-    output$Mortality_Plot <- renderPlot({ ## graph correspond with the mortality rate. 
-      ggplot(mortality())+
-        geom_segment(aes(x=0  , xend=mortality_rate , y=location, yend=location, color = location))+
-        geom_point(aes(x= mortality_rate, y = location, color = location),stat = "identity")+
-        xlab("Cases of mortality") +
-        scale_x_continuous(labels = comma)
+    output$Mortality_Plot <- renderPlotly({ ## graph correspond with the mortality rate. 
+      ggplotly(p = ggplot(mortality())+
+                 geom_segment(aes(x=0  , xend=mortality_rate , y=location, yend=location, color = location))+
+                 geom_point(aes(x= mortality_rate, y = location, color = location),stat = "identity")+
+                 xlab("Cases of mortality") +
+                 scale_x_continuous(labels = comma))
+      
     })
     
-    output$vac_Plot <- renderPlot({ ## graph correspond with the vaccine. 
-      ggplot(vac()) +
-        geom_segment(aes(x=0  , xend=people_fully_vaccinated, y=location, yend=location, color = location))+
-        geom_point(aes(x = people_fully_vaccinated, y = location, color = location), stat = "identity")+
-        scale_x_continuous(labels = comma)
+    output$vac_Plot <- renderPlotly({ ## graph correspond with the vaccine. 
+      ggplotly(p = ggplot(vac()) +
+                 geom_segment(aes(x=0  , xend=people_fully_vaccinated, y=location, yend=location, color = location))+
+                 geom_point(aes(x = people_fully_vaccinated, y = location, color = location), stat = "identity")+
+                 scale_x_continuous(labels = comma))
+      
     })
         
 })
