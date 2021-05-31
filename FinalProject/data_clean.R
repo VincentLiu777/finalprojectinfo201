@@ -1,4 +1,7 @@
 covidData <- read.csv("../raw data/owid-covid-data (1).csv")
+
+covidData[is.na(covidData)] = 0
+
 data <- covidData %>%
   filter(continent == "" | location =="United States" | location == "China" | 
            location == "Russia" | location == "Japan" | location == "Germany" |
