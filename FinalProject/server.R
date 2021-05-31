@@ -10,12 +10,26 @@ source("data_clean.R")
 
 
 # Define server logic required to draw a histogram
-shinyServer(function(input, output) {
+shinyServer(function(input, output, session) {
     output$locations <- renderUI({
         checkboxGroupInput("location", label = h3("locations of interest"), 
                             choices = unique(data$location),
                             selected = "World")
+        
     })
+#selectAll action button begin
+    observe({
+      if(input$selectall == 0) return(NULL) 
+      else if (input$selectall%%2 == 0)
+      {
+        updateCheckboxGroupInput(session,"location",label = h3("locations of interest"),choices=unique(data$location))
+      }
+      else
+      {
+        updateCheckboxGroupInput(session,"location",label = h3("locations of interest"),choices=unique(data$location), selected = unique(data$location) )
+      }
+    })
+#selectAll action button end    
     
     vac <- reactive({ ## data for vaccine.
       print(input$slider)
@@ -67,7 +81,7 @@ shinyServer(function(input, output) {
         geom_segment(data = segmentData(), aes(x=new_cases  , xend=total_cases, y=location, yend=location))+
         geom_point(stat = "identity") +
         geom_point(data = totalCases(), aes(x=total_cases, y=location, color = location), stat = "identity")+
-        xlab("Value of new cases - total cases") +
+        xlab("Cases of infection, New cases -> total cases") +
         scale_x_continuous(labels = comma)
       
     })
@@ -77,6 +91,7 @@ shinyServer(function(input, output) {
       ggplot(mortality())+
         geom_segment(aes(x=0  , xend=mortality_rate , y=location, yend=location, color = location))+
         geom_point(aes(x= mortality_rate, y = location, color = location),stat = "identity")+
+        xlab("Cases of mortality") +
         scale_x_continuous(labels = comma)
     })
     

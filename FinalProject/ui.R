@@ -12,7 +12,8 @@ shinyUI(fluidPage(
     sidebarLayout(
         sidebarPanel(
             sliderInput("slider", "Time", min = as.Date("2020-01-01"),max =as.Date("2021-05-01"),value=as.Date("2020-01-01"),timeFormat="%m/%Y"),
-            uiOutput("locations")
+            uiOutput("locations"),
+            actionLink("selectall","Select All") 
         ),
 
         # Show a plot of the generated distribution
