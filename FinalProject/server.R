@@ -50,7 +50,7 @@ shinyServer(function(input, output) {
             select(location, total_cases)
     })
     
-#Cases graph section begin
+#Cases graph section end
     
     output$cases_Plot <- renderPlot ({ ## graph correspond with the Infected cases 
     
@@ -70,13 +70,17 @@ shinyServer(function(input, output) {
       
     })
     
-    output$vac_Plot <- renderPlot({ ## graph correspond with the vaccine. 
-      ggplot(vac()) +
-        geom_point(aes(x = people_fully_vaccinated, y = location, color = location), stat = "identity")
-    })
+   
     output$Mortality_Plot <- renderPlot({ ## graph correspond with the mortality rate. 
       ggplot(mortality())+
+        geom_segment(aes(x=0  , xend=people_fully_vaccinated, y=location, yend=location, color = location))+
         geom_point(aes(x= mortality_rate, y = location, color = location),stat = "identity")
+    })
+    
+    output$vac_Plot <- renderPlot({ ## graph correspond with the vaccine. 
+      ggplot(vac()) +
+        geom_segment(aes(x=0  , xend=people_fully_vaccinated, y=location, yend=location, color = location))+
+        geom_point(aes(x = people_fully_vaccinated, y = location, color = location), stat = "identity")
     })
         
 })
