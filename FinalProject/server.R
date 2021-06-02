@@ -110,6 +110,6 @@ shinyServer(function(input, output, session) {
                  scale_x_continuous(labels = comma))
       
     })
-        
+      
 })
 
