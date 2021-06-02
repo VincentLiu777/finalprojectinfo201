@@ -118,6 +118,6 @@ shinyServer(function(input, output, session) {
       ggplotly(p3, tooltip = c("x", "y"))%>% 
         style(hoverinfo = "none", traces = 1)
     })
-        
+      
 })
 
