@@ -20,27 +20,29 @@ shinyUI(fluidPage(
         mainPanel(
             tabsetPanel(
                 tabPanel("Home",
-                        p("Welcome to our website. This website is a student assignment for Info 201 in 
+                          p("Welcome to our website. This website is a student assignment for Info 201 in 
                           University of Washington. The website contains information about Covid-19 
                           in general, all data was collected from “Our World in Data”.The dataset 
                           explicitly contains cumulative data and daily data for vaccine numbers, 
                           confirmed cases, confirmed deaths, newly increased cases, etc. 
                           This vaccination dataset uses the most recent official numbers from governments
                           and health ministries worldwide. All data comes from Global Change Data Lab, 
-                          on their website, it offers detailed information on editors and data collectors. 
-                          Here is the link for reference: [Coronavirus (COVID-19) Vaccinations - Statistics 
-                           and Research - Our World in Data.] (https://ourworldindata.org/covid-vaccinations)"),
-                       p("For our group’s project, the intended audience could be simply anyone who cares and
+                          on their website, it offers detailed information on editors and data collectors.","Here is the link for reference: ",a(href="https://ourworldindata.org/covid-vaccinations", "[Coronavirus (COVID-19) 
+                          Vaccinations - Statistics and Research - Our World in Data.]")),
+                         br(),
+                        
+                        p("For our group’s project, the intended audience could be simply anyone who cares and
                           willing to pay attention to the pandemic data. The audience can have a better 
                           understanding of the pandemic and its influence to various factors after reading our
                           group’s report. In the website, we will offer three graphs that correspond with the 
                           opions on the left. Users have the ability to see a single country or continent, and 
                           also compare various countries or continents. Users also have the ability to drag the 
                           timeline to see the shift on data. The three graphs are: the number of cases, 
-                          the mortality rate, and the vaccination. You can learn more about the coding through 
-                          our group’s github repository. (VincentLiu777/finalprojectinfo201: 
-                                                              final project for Info 201 (github.com)) "),
-                      p("Graph of Cases of Infection: The first dot on the graph represents the number of 
+                          the mortality rate, and the vaccination.",a(href="https://github.com/VincentLiu777/finalprojectinfo201", "You can learn more about the coding through 
+                          our group’s github repository.")),
+                        br(),
+                      
+                        p("Graph of Cases of Infection: The first dot on the graph represents the number of 
                           new cases in that region, where the second dot on the graph represents the total 
                           cases of the region. 
                           Graph of mortality rate: This graph computes the mortality rate for the specific 
