@@ -52,14 +52,24 @@ shinyUI(fluidPage(
                          p("About the Author: The website was written by three students from University of Washington."), 
                          p("Anthony Zhang: A pre-major freshman at UW."),  
                          p("Vincent Liu: A pre-major freshman at UW."),   
-                         p("Minghui He: A senior major in … at UW. "),  
+                         p("Minhui He: A senior major in Math at UW. "),  
                          p("You can contact us by email: rliu8@uw.edu.")),   
                 tabPanel("Numbers of Cases",
                          plotlyOutput("cases_Plot")),
                 tabPanel("Mortality Rate",
-                        plotlyOutput("Mortality_Plot")), 
+                         plotlyOutput("Mortality_Plot")), 
                 tabPanel("Vaccine",
-                            plotlyOutput("vac_Plot"))
+                         plotlyOutput("vac_Plot")),
+                tabPanel("Conclusion", 
+                         p("Considering the confirm cases of COVID-19 worldwide, the total number of cases
+                           increases rapidly initially and is then controlled regionally by countries. From
+                           the plot, the monthly new cases of COVID-19 worldwide was stable at the point around
+                           500,000. However, the situation start to get worse around 01/2021. Hypothetically,
+                           this increment could caused by the aberrance of COVID-19."),
+                         p("In the case of mortality rate, the world's mortality rate of COVID-19 reaches maximum at 08/2021. 
+                           Areas with large number of confirmed cases of COVID(South America and Oceania) has raised the 
+                           worldwide mortality rate significantly. Lately, around 03/2021, the worldwide mortality rate of 
+                           COVID-19 start to stablize around 1.8. "))
 
         )
     )
