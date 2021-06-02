@@ -81,7 +81,7 @@ shinyServer(function(input, output, session) {
       p1 =  ggplot(newCases(),aes(x=new_cases, y=location, color = location) ) +
         geom_segment(data = segmentData(), aes(x=new_cases, xend=total_cases, y=location, yend=location))+
         geom_point(stat = "identity") +
-        geom_point(data = totalCases(), aes(x=total_cases, color = location), stat = "identity")+
+        geom_point(data = totalCases(), aes(x=total_cases, color = location, stat = "identity"))+
         theme(legend.position = "none")+
         xlab("Cases of infection, New cases -> total cases") +
         scale_x_continuous(labels = comma)
@@ -117,7 +117,6 @@ shinyServer(function(input, output, session) {
       
       ggplotly(p3, tooltip = c("x", "y"))%>% 
         style(hoverinfo = "none", traces = 1)
-      #make test change
     })
         
 })
