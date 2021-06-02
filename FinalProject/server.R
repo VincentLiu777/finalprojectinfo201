@@ -13,7 +13,7 @@ source("data_clean.R")
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
     output$locations <- renderUI({
-        checkboxGroupInput("location", label = h3("locations of interest"), 
+        checkboxGroupInput("location", label = h3("Locations of interest"), 
                             choices = unique(data$location),
                             selected = "World")
         
@@ -23,11 +23,11 @@ shinyServer(function(input, output, session) {
       if(input$selectall == 0) return(NULL) 
       else if (input$selectall%%2 == 0)
       {
-        updateCheckboxGroupInput(session,"location",h3("locations of interest"),choices=unique(data$location))
+        updateCheckboxGroupInput(session,"location",h3("Locations of interest"),choices=unique(data$location))
       }
       else
       {
-        updateCheckboxGroupInput(session,"location",h3("locations of interest"),choices=unique(data$location), selected = unique(data$location) )
+        updateCheckboxGroupInput(session,"location",h3("Locations of interest"),choices=unique(data$location), selected = unique(data$location) )
       }
     })
 #selectAll action button end    
