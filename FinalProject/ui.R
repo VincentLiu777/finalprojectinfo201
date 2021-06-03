@@ -22,7 +22,7 @@ shinyUI(fluidPage(
                 tabPanel("Home",
                           p("Welcome to our website. This website is a student assignment for Info 201 in 
                           University of Washington. The website contains information about Covid-19 
-                          in general, all data was collected from “Our World in Data”.The dataset 
+                          in general, the dataset 
                           explicitly contains cumulative data and daily data for vaccine numbers, 
                           confirmed cases, confirmed deaths, newly increased cases, etc. 
                           This vaccination dataset uses the most recent official numbers from governments
@@ -41,20 +41,19 @@ shinyUI(fluidPage(
                           the mortality rate, and the vaccination.",a(href="https://github.com/VincentLiu777/finalprojectinfo201", "You can learn more about the coding through 
                           our group’s github repository.")),
                         br(),
-                      
                         p("Graph of Cases of Infection: The first dot on the graph represents the number of 
                           new cases in that region, where the second dot on the graph represents the total 
-                          cases of the region. 
-                          Graph of mortality rate: This graph computes the mortality rate for the specific 
-                          region, the unit for this graph is in percent. 
-                          Graph of vaccine: This graph shows the number of people that are fully vaccinated 
-                          in the specific region. SInce the vaccine finally came out in around January 2021, 
-                          please drag the timeline to the proper time period in order to examine the data.")),
+                          cases of the region."),
+                        p("Graph of mortality rate: This graph computes the mortality rate for the specific 
+                          region, the unit for this graph is in percent."), 
+                        p("Graph of vaccine: This graph shows the number of people that are fully vaccinated 
+                          in the specific region. Since the vaccine came out in around January 2021, 
+                          please drag the timeline to the proper time period in order to examine the data")),
                 tabPanel("About Us",
                          p("About the Author: The website was written by three students from University of Washington."), 
                          p("Anthony Zhang: A pre-major freshman at UW."),  
                          p("Vincent Liu: A pre-major freshman at UW."),   
-                         p("Minhui He: A senior major in Math at UW. "),  
+                         p("Minhui He: A senior major in Math at UW."),  
                          p("You can contact us by email: rliu8@uw.edu.")),   
                 tabPanel("Numbers of Cases",
                          plotlyOutput("cases_Plot")),
@@ -71,7 +70,12 @@ shinyUI(fluidPage(
                          p("In the case of mortality rate, the world's mortality rate of COVID-19 reaches maximum at 08/2021. 
                            Areas with large number of confirmed cases of COVID(South America and Oceania) has raised the 
                            worldwide mortality rate significantly. Lately, around 03/2021, the worldwide mortality rate of 
-                           COVID-19 start to stablize around 1.8. "))
+                           COVID-19 start to stablize around 1.8. "),
+                         p("Although our group's data came from government data base. Unfortunally, there were still 
+                           places in the data that was being left empty. This result some of the countries don't have enough statistics to
+                           compute the graph. Also, for sure we cannot garentee the data to be 100% accurate down to single person unit,
+                           since it take a lot of effort and human resource to collect the data. From this project, we realize the importance
+                           of having unbiased, accurate, intact data."))
 
         )
     )
