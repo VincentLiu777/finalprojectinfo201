@@ -20,6 +20,7 @@ shinyUI(fluidPage(
         mainPanel(
             tabsetPanel(
                 tabPanel("Home",
+                          tags$img(src= "covid-19.jpg", alt = "covid-19 imagine"),
                           p("Welcome to our website. This website is a student assignment for Info 201 in 
                           University of Washington. The website contains information about Covid-19 
                           in general, the dataset 
@@ -48,7 +49,8 @@ shinyUI(fluidPage(
                           region, the unit for this graph is in percent."), 
                         p("Graph of vaccine: This graph shows the number of people that are fully vaccinated 
                           in the specific region. Since the vaccine came out in around January 2021, 
-                          please drag the timeline to the proper time period in order to examine the data")),
+                          please drag the timeline to the proper time period in order to examine the data")
+                        ),
                 tabPanel("About Us",
                          p("About the Author: The website was written by three students from University of Washington."), 
                          p("Anthony Zhang: A pre-major freshman at UW."),  
