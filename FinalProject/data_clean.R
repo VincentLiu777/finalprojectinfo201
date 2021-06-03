@@ -1,4 +1,12 @@
-covidData <- read.csv("../raw data/owid-covid-data (1).csv")
+library(shiny)
+library(dplyr)
+library(ggplot2)
+library(hrbrthemes)
+library(tidyverse)
+library(scales)
+library(plotly)
+
+covidData <- read.csv("owid-covid-data (1).csv")
 
 covidData[is.na(covidData)] = 0
 
