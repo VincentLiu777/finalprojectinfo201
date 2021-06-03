@@ -1,3 +1,11 @@
+library(shiny)
+library(dplyr)
+library(ggplot2)
+library(hrbrthemes)
+library(tidyverse)
+library(scales)
+library(plotly)
+library(shiny.router)
 covidData <- read.csv("../raw data/owid-covid-data (1).csv")
 
 covidData[is.na(covidData)] = 0
@@ -15,3 +23,4 @@ data <- covidData %>%
             total_deaths = max(total_deaths),
             new_deaths = max(new_deaths),
             people_fully_vaccinated = max(people_fully_vaccinated))
+

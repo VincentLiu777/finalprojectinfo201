@@ -5,6 +5,7 @@ library(hrbrthemes)
 library(tidyverse)
 library(scales)
 library(plotly)
+library(shiny.router)
 
 
 source("data_clean.R")

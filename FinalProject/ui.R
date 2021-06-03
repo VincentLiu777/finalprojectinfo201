@@ -1,8 +1,18 @@
 library(shiny)
 library(dplyr)
+library(ggplot2)
+library(hrbrthemes)
+library(tidyverse)
+library(scales)
+library(plotly)
+library(shiny.router)
+
+
+
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
+    theme = "main.css",
 
     # Application title
 
@@ -20,6 +30,7 @@ shinyUI(fluidPage(
         mainPanel(
             tabsetPanel(
                 tabPanel("Home",
+                          img(src='Coronavirus-CDC-645x645.jpg', align = "left"),
                           p("Welcome to our website. This website is a student assignment for Info 201 in 
                           University of Washington. The website contains information about Covid-19 
                           in general, all data was collected from “Our World in Data”.The dataset 
