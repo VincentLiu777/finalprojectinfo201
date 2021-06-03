@@ -1,5 +1,10 @@
 library(shiny)
 library(dplyr)
+library(ggplot2)
+library(hrbrthemes)
+library(tidyverse)
+library(scales)
+library(plotly)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -20,7 +25,7 @@ shinyUI(fluidPage(
         mainPanel(
             tabsetPanel(
                 tabPanel("Home",
-                          tags$img(src= "covid-19.jpg", alt = "covid-19 imagine"),
+                          tags$img(src= "covid-19.jpg", alt = "covid-19 image"),
                           p("Welcome to our website. This website is a student assignment for Info 201 in 
                           University of Washington. The website contains information about Covid-19 
                           in general, the dataset 
