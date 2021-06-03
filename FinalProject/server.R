@@ -4,7 +4,7 @@ library(ggplot2)
 library(hrbrthemes)
 library(tidyverse)
 library(scales)
-library(plotly)
+
 
 
 source("data_clean.R")

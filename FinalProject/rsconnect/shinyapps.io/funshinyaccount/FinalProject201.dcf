@@ -1,0 +1,13 @@
+name: FinalProject201
+title: FinalProject201
+username:
+account: funshinyaccount
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4222241
+bundleId: 4672273
+url: https://funshinyaccount.shinyapps.io/FinalProject201/
+when: 1622710682.47362
+lastSyncTime: 1622710682.47362
+asMultiple: FALSE
+asStatic: FALSE
