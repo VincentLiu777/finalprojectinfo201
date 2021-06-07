@@ -37,9 +37,6 @@ shinyUI(fluidPage(# Application title
             actionLink("selectall","Select All")
         ),
         dashboardBody(
-            tags$head(
-                tags$link(rel = "stylesheet", type = "text/css", href = "mycss.css")
-            ),
             use_theme(mytheme),
             column(width = 6,
                 box(title = "Home", width = NULL,status = "primary", solidHeader = TRUE, collapsible = TRUE, #collapsed = TRUE,
