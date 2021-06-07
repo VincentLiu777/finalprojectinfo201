@@ -7,6 +7,9 @@ library(scales)
 library(plotly)
 library(shinydashboard)
 library(fresh)
+library(profvis)
+
+profvis({
 
 #color theme for ui
 mytheme <- create_theme(
@@ -27,8 +30,9 @@ mytheme <- create_theme(
     )
 )
 
+
 shinyUI(fluidPage(# Application title
-        dashboardPage(dashboardHeader(title = "Covid-19 data visualization and analysis"), skin = "blue",
+        dashboardPage(dashboardHeader(title = "Covid-19 data visualization and analysis"),
                       
         dashboardSidebar(
             #tags$style(HTML(".js-irs-2 .irs-single, .js-irs-2 .irs-bar-edge, .js-irs-2 .irs-bar {background: green}")),
@@ -113,5 +117,5 @@ shinyUI(fluidPage(# Application title
     )
 ))
 
-
+})
 

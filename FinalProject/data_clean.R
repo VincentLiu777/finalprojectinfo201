@@ -8,7 +8,7 @@ library(plotly)
 library(shinydashboard)
 library(fresh)
 
-covidData <- read.csv("../raw data/owid-covid-data (1).csv")
+covidData <- read.csv("owid-covid-data (1).csv")
 
 covidData[is.na(covidData)] = 0
 
