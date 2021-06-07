@@ -5,7 +5,9 @@ library(hrbrthemes)
 library(tidyverse)
 library(scales)
 library(plotly)
-library(shiny.router)
+library(shinydashboard)
+library(fresh)
+
 covidData <- read.csv("../raw data/owid-covid-data (1).csv")
 
 covidData[is.na(covidData)] = 0

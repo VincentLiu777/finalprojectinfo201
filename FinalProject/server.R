@@ -5,11 +5,11 @@ library(hrbrthemes)
 library(tidyverse)
 library(scales)
 library(plotly)
-library(shiny.router)
+library(shinydashboard)
+library(fresh)
 
 
 source("data_clean.R")
-
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
