@@ -34,14 +34,12 @@ shinyServer(function(input, output, session) {
 #selectAll action button end    
     
     vac <- reactive({ ## data for vaccine.
-      #print(input$slider)
       data %>%
         filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
         filter(location %in% input$location) %>%
         select(location, people_fully_vaccinated)
     })
     mortality <- reactive({ ## data for mortality rate
-      #print(input$slider)
       data %>% 
         mutate(mortality_rate = (new_deaths/new_cases)*100) %>% 
         filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
@@ -52,7 +50,6 @@ shinyServer(function(input, output, session) {
 #Cases graph section begin
     
     newCases <- reactive({
-      #print(input$slider)
       data %>%
         filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
         filter(location %in% input$location) %>%
@@ -60,7 +57,6 @@ shinyServer(function(input, output, session) {
     })
     
     totalCases <- reactive({
-        #print(input$slider)
         data %>%
             filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
             filter(location %in% input$location) %>%

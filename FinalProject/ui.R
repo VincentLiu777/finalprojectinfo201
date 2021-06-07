@@ -7,9 +7,7 @@ library(scales)
 library(plotly)
 library(shinydashboard)
 library(fresh)
-library(profvis)
 
-profvis({
 
 #color theme for ui
 mytheme <- create_theme(
@@ -34,13 +32,12 @@ mytheme <- create_theme(
 shinyUI(fluidPage(# Application title
         dashboardPage(dashboardHeader(title = "Covid-19 data visualization and analysis"),
                       
-        dashboardSidebar(
-            #tags$style(HTML(".js-irs-2 .irs-single, .js-irs-2 .irs-bar-edge, .js-irs-2 .irs-bar {background: green}")),
+        dashboardSidebar( #sidebar
             sliderInput("slider", "Time", min = as.Date("2020-01-01"),max =as.Date("2021-05-01"),value=as.Date("2020-01-01"),timeFormat="%m/%Y"),
             uiOutput("locations"),
             actionLink("selectall","Select All")
         ),
-        dashboardBody(
+        dashboardBody( #body/main component
             use_theme(mytheme),
             column(width = 6,
                 box(title = "Home", width = NULL,status = "primary", solidHeader = TRUE, collapsible = TRUE, #collapsed = TRUE,
@@ -117,5 +114,4 @@ shinyUI(fluidPage(# Application title
     )
 ))
 
-})
 

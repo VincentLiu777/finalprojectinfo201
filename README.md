@@ -40,15 +40,5 @@ Here is our group’s github link for reference: [finalprojectinfo201](https://g
 
 -------------------------------------------
 
-Group member tasks: 
-
-1. Data cleaning -- Vincent Liu, Anthony Zhang
-
-2. Plotting -- Minhui He, Anthony Zhang
-
-3. Time keeper -- Minhui He, Anthony Zhang
-
-4. Analysis -- Vincent Liu, Anthony Zhang
-
-5. Web designing -- Anthony Zhang
+Here is the link for our website: https://antzed.shinyapps.io/FinalProject_visualOverhall/
 
