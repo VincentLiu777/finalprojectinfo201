@@ -4,11 +4,11 @@ library(ggplot2)
 library(hrbrthemes)
 library(tidyverse)
 library(scales)
-
-
+library(plotly)
+library(shinydashboard)
+library(fresh)
 
 source("data_clean.R")
-
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
@@ -23,24 +23,22 @@ shinyServer(function(input, output, session) {
       if(input$selectall == 0) return(NULL) 
       else if (input$selectall%%2 == 0)
       {
-        updateCheckboxGroupInput(session,"location",h3("Locations of interest"),choices=unique(data$location))
+        updateCheckboxGroupInput(session,"location",label = h3("Locations of interest"),choices=unique(data$location))
       }
       else
       {
-        updateCheckboxGroupInput(session,"location",h3("Locations of interest"),choices=unique(data$location), selected = unique(data$location) )
+        updateCheckboxGroupInput(session,"location",label = h3("Locations of interest"),choices=unique(data$location), selected = unique(data$location) )
       }
     })
 #selectAll action button end    
     
     vac <- reactive({ ## data for vaccine.
-      print(input$slider)
       data %>%
         filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
         filter(location %in% input$location) %>%
         select(location, people_fully_vaccinated)
     })
     mortality <- reactive({ ## data for mortality rate
-      print(input$slider)
       data %>% 
         mutate(mortality_rate = (new_deaths/new_cases)*100) %>% 
         filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
@@ -51,7 +49,6 @@ shinyServer(function(input, output, session) {
 #Cases graph section begin
     
     newCases <- reactive({
-      print(input$slider)
       data %>%
         filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
         filter(location %in% input$location) %>%
@@ -59,7 +56,6 @@ shinyServer(function(input, output, session) {
     })
     
     totalCases <- reactive({
-        print(input$slider)
         data %>%
             filter(month == format(as.POSIXlt(input$slider), "%m/%Y")) %>%
             filter(location %in% input$location) %>%
@@ -95,7 +91,7 @@ shinyServer(function(input, output, session) {
    
     output$Mortality_Plot <- renderPlotly({ ## graph correspond with the mortality rate. 
       p2 = ggplot(mortality())+
-        geom_segment(aes(x=0  , xend=mortality_rate , y=location, yend=location, color = location))+
+        geom_segment(aes(x=0, xend=mortality_rate , y=location, yend=location, color = location))+
         geom_point(aes(x= mortality_rate, y = location, color = location),stat = "identity")+
         theme(legend.position = "none")+
         xlab("Cases of mortality") +

@@ -5,6 +5,8 @@ library(hrbrthemes)
 library(tidyverse)
 library(scales)
 library(plotly)
+library(shinydashboard)
+library(fresh)
 
 covidData <- read.csv("owid-covid-data (1).csv")
 
@@ -23,3 +25,4 @@ data <- covidData %>%
             total_deaths = max(total_deaths),
             new_deaths = max(new_deaths),
             people_fully_vaccinated = max(people_fully_vaccinated))
+
